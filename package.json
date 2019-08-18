@@ -1,0 +1,47 @@
+{
+  "name": "mothersystem",
+  "version": "1.0.0",
+  "description": "This system is for my mom",
+  "main": "App.js",
+  "scripts": {
+    "buildMother": "babel src -d dist --source-maps",
+    "startMother": "nodemon src/controllers/app.js --exec babel-node ",
+    "serveMother": "node dist/controllers/app.js",
+    "cleanMother": "rimraf dist"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/betonajera9/MotherSystem.git"
+  },
+  "author": "BetoNajera",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/betonajera9/MotherSystem/issues"
+  },
+  "homepage": "https://github.com/betonajera9/MotherSystem#readme",
+  "dependencies": {
+    "apollo-server-express": "^2.8.1",
+    "express": "^4.17.1",
+    "graphql": "^14.4.2",
+    "graphql-tools": "^4.0.5",
+    "materialize-css": "^1.0.0-rc.2",
+    "mongoose": "^5.6.9",
+    "morgan": "^1.9.1",
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0",
+    "rimraf": "^3.0.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.5.5",
+    "@babel/core": "^7.5.5",
+    "@babel/node": "^7.5.5",
+    "@babel/polyfill": "^7.4.4",
+    "@babel/preset-env": "^7.5.5",
+    "@babel/preset-react": "^7.0.0",
+    "babel-loader": "^8.0.6",
+    "concurrently": "^4.1.2",
+    "nodemon": "^1.19.1",
+    "webpack": "^4.39.2",
+    "webpack-cli": "^3.3.6"
+  }
+}
