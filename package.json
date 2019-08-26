@@ -1,12 +1,13 @@
 {
   "name": "mothersystem",
   "version": "1.0.0",
-  "description": "This system is for my mom",
+  "description": "This system is for my mommy",
   "main": "App.js",
   "scripts": {
     "buildMother": "babel src -d dist --source-maps",
     "startMother": "nodemon src/controllers/app.js --exec babel-node ",
     "serveMother": "node dist/controllers/app.js",
+    "webpackMother": "webpack --mode development --watch",
     "cleanMother": "rimraf dist"
   },
   "repository": {
@@ -20,6 +21,8 @@
   },
   "homepage": "https://github.com/betonajera9/MotherSystem#readme",
   "dependencies": {
+    "@apollo/react-hooks": "^3.0.1",
+    "apollo-boost": "^0.4.4",
     "apollo-server-express": "^2.8.1",
     "express": "^4.17.1",
     "graphql": "^14.4.2",
@@ -27,9 +30,7 @@
     "materialize-css": "^1.0.0-rc.2",
     "mongoose": "^5.6.9",
     "morgan": "^1.9.1",
-    "react": "^16.9.0",
-    "react-dom": "^16.9.0",
-    "rimraf": "^3.0.0"
+    "react-apollo": "^3.0.1"
   },
   "devDependencies": {
     "@babel/cli": "^7.5.5",
@@ -40,7 +41,13 @@
     "@babel/preset-react": "^7.0.0",
     "babel-loader": "^8.0.6",
     "concurrently": "^4.1.2",
+    "css-loader": "^3.2.0",
     "nodemon": "^1.19.1",
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0",
+    "react-router-dom": "^5.0.1",
+    "rimraf": "^3.0.0",
+    "style-loader": "^1.0.0",
     "webpack": "^4.39.2",
     "webpack-cli": "^3.3.6"
   }

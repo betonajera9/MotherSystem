@@ -1,6 +1,8 @@
 import express from 'express';
 import path from 'path';
 import morgan from 'morgan';
+import React from 'react';
+import ReactDOMServer from 'react-dom/server';
 import SERVER from '../routes/schema';
 
 //Initializations
@@ -18,14 +20,20 @@ app.set('port', process.env.PORT || 4000);
 app.use(morgan('dev'));
 app.use(express.json());
 
+//Static Files
+app.use(express.static(path.join(__dirname, '../public')));
+
 //Routes
 SERVER.applyMiddleware({
   app
 });
-app.use('/', (req, res) => {res.json({message: 'helloWorld'});});
 
-//Static Files
-// app.use(express.static(path.join(__dirname, '../Public')));
+app.get('/*', (req, res) => {
+  res.sendFile(path.resolve('src', 'public', 'index.html'));
+});
+
 
 //start the server
-app.listen(app.get('port'), () => console.log('=> Server on port ' + app.get('port')));
+app.listen(app.get('port'), () => {
+  console.log('=> Server on port ' + app.get('port'));
+});
