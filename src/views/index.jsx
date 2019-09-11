@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { render } from 'react-dom';
-import {BrowserRouter, Route, Switch} from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Home from './pages/home.jsx';
 import Payments from './pages/payments.jsx';
 import Books from './pages/books.jsx';

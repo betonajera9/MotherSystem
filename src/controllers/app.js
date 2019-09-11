@@ -3,15 +3,14 @@ import path from 'path';
 import morgan from 'morgan';
 import React from 'react';
 import ReactDOMServer from 'react-dom/server';
-import SERVER from '../routes/schema';
+import SERVER from '../schema/schema';
 
 //Initializations
 const app = express();
 connect();
 
 //MongoDB models
-import {connect} from './database';
-import teacher from '../models/teacher';
+import { connect } from './database';
 
 //Settings
 app.set('port', process.env.PORT || 4000);
@@ -25,7 +24,7 @@ app.use(express.static(path.join(__dirname, '../public')));
 
 //Routes
 SERVER.applyMiddleware({
-  app
+  app,
 });
 
 app.get('/*', (req, res) => {

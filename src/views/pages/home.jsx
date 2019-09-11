@@ -1,64 +1,61 @@
-import React, {Component} from 'react';
-import {Link} from 'react-router-dom';
+import React, { Component } from 'react';
+import Orders from '../req/orders.jsx';
 
 class Home extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      name: '',
+      grade: '',
+      searchTeacher: false,
+    };
+    this.handleSearchTeacher = this.handleSearchTeacher.bind(this);
+    this.handleSetTeacher = this.handleSetTeacher.bind(this);
+  }
+
+  handleSearchTeacher(evt) {
+    this.setState({
+      searchTeacher: true,
+    });
+    evt.preventDefault();
+  }
+
+  handleSetTeacher(evt) {
+    this.setState({
+      searchTeacher: false,
+    });
+    const { id, value } = evt.target;
+    this.setState({
+      [id]: value,
+    });
+  }
+
   render() {
     return (
       <div className='container'>
         <div className='row'>
           <div className='col s12 m4 l2'></div>
           <div className='input-field col s12 m4 l8'>
-            <form>
-              <label>Escuelas</label>
-              <select className='browser-default'>
-                <option value='' disabled selected>Choose your option</option>
-                <option value='1'>Option 1</option>
-                <option value='2'>Option 2</option>
-                <option value='3'>Option 3</option>
-              </select>
+
+            <form onSubmit={this.handleSearchTeacher}>
+              <label htmlFor="name">Nombre</label>
+              <input type="text" id="name" className="autocomplete" onChange={this.handleSetTeacher}/>
               <br/>
-              <label>Grupo</label>
-              <select className='browser-default'>
-                <option value='' disabled selected>Choose your option</option>
-                <option value='1'>Option 1</option>
-                <option value='2'>Option 2</option>
-                <option value='3'>Option 3</option>
-              </select>
+              <label htmlFor="grade">Grado</label>
+              <input type="text" id="grade" className="autocomplete" onChange={this.handleSetTeacher}/>
               <br/>
-              <label>Profesor</label>
-              <select className='browser-default'>
-                <option value='' disabled selected>Choose your option</option>
-                <option value='1'>Option 1</option>
-                <option value='2'>Option 2</option>
-                <option value='3'>Option 3</option>
-              </select>
+              <button className='btn waves-effect waves-light' type='submit' name='action'>Buscar
+                <i className='material-icons right'>send</i>
+              </button>
             </form>
+            {this.state.login ?
+            <Orders name={this.state.name} grade={this.state.grade}/> :
+            null }
           </div>
           <div className='col s12 m4 l2'></div>
         </div>
-        <div className='row'>
-          <div className='col s12 m4 l2'></div>
-            <div className='col s12 m4 l8'>
-              <tbody className='highlight'>
-                <tr>
-                  <th>Escuela:</th>
-                  <td>nombreEscuela</td>
-                </tr>
-                <tr>
-                  <th>Profesor:</th>
-                  <td>nombreProf</td>
-                </tr>
-                <tr>
-                  <th>Numero:</th>
-                  <td>numero</td>
-                </tr>
-                <tr>
-                  <th>Pedidos</th>
-                </tr>
-              </tbody>
-            </div>
-            <div className='col s12 m4 l2'></div>
-        </div>
+
+
       </div>
     );
   }

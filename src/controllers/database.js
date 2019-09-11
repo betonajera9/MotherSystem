@@ -8,6 +8,6 @@ export async function connect() {
     console.log('=> DB is connected');
   }
   catch {
-    console.log('=> Somethign goes wrong!');
+    console.log('=> Somethig goes wrong!');
   }
 };

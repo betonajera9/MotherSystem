@@ -1,24 +1,15 @@
 import mongoose from 'mongoose';
 
-const teacherSchema = mongoose.Schema({
+const Schema = mongoose.Schema;
+
+const teacherModel = mongoose.Schema({
   name: String,
-  surnames: String,
   number: String,
   school: [String],
-  orders: [{
-    name: String,
-    quantity: Number,
-    unit_price: Number,
-    total_price: Number,
-    delvered: Boolean,
-    paid_out: Boolean,
-    paid: [{
-      date: Date,
-      quantity: Number
-    }]
-  }]
+  grade: [String],
+  orders: [{ type: Schema.Types.ObjectId, ref: 'orders' }],
 });
 
-const teacher = mongoose.model('teachers', teacherSchema);
+const teachers = mongoose.model('teachers', teacherModel);
 
-export default teacher;
+export default teachers;
